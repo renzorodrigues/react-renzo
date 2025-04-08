@@ -16,7 +16,6 @@ export default function MainLayout({ children }: MainLayoutProps) {
   const router = useRouter();
   const pathname = usePathname();
   console.log('MainLayout - Auth state:', { user, loading });
-  console.log('MainLayout - localStorage user:', localStorage.getItem('user'));
 
   useEffect(() => {
     // Se não estiver carregando e não houver usuário, redireciona para login

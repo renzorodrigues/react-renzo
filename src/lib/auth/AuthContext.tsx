@@ -60,7 +60,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setUser(mockUser);
       
       console.log('AuthProvider - Saving to localStorage...');
-      localStorage.setItem('user', JSON.stringify(mockUser));
+      // Only access localStorage on the client side
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('user', JSON.stringify(mockUser));
+      }
       
       console.log('AuthProvider - Login complete');
     } catch (error) {
@@ -75,7 +78,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     console.log('AuthProvider - Logout started');
     setLoading(true);
     setUser(null);
-    localStorage.removeItem('user');
+    // Only access localStorage on the client side
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('user');
+    }
     console.log('AuthProvider - Logout complete');
     setLoading(false);
   };
