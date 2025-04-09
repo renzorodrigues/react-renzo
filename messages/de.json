@@ -8,7 +8,8 @@
     "settings": "Einstellungen",
     "logout": "Abmelden",
     "userOptions": "Benutzeroptionen",
-    "changeLanguage": "Sprache ändern"
+    "changeLanguage": "Sprache ändern",
+    "store": "Geschäft"
   },
   "login": {
     "title": "Login-Bereich",
@@ -48,6 +49,7 @@
   },
   "dashboard": {
     "welcome": "Willkommen in Ihrem Dashboard",
+    "registerStore": "Geschäft registrieren",
     "stats": {
       "sales": {
         "label": "Verkäufe",
@@ -183,6 +185,30 @@
       "error": {
         "title": "Fehler beim Speichern der Einstellungen",
         "description": "Beim Aktualisieren Ihrer Einstellungen ist ein Fehler aufgetreten."
+      }
+    }
+  },
+  "store": {
+    "title": "Geschäft registrieren",
+    "subtitle": "Füllen Sie die Daten Ihres Geschäfts aus",
+    "form": {
+      "name": "Geschäftsname",
+      "namePlaceholder": "Geben Sie den Namen Ihres Geschäfts ein",
+      "address": "Adresse",
+      "addressPlaceholder": "Geben Sie die vollständige Adresse ein",
+      "phone": "Telefon",
+      "phonePlaceholder": "(00) 00000-0000",
+      "email": "E-Mail",
+      "emailPlaceholder": "geschaeft@beispiel.com",
+      "isActive": "Geschäft aktiv",
+      "submit": "Geschäft registrieren",
+      "success": {
+        "title": "Geschäft registriert!",
+        "description": "Die Daten Ihres Geschäfts wurden erfolgreich gespeichert."
+      },
+      "error": {
+        "title": "Registrierungsfehler",
+        "description": "Beim Speichern der Geschäftsdaten ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
       }
     }
   }

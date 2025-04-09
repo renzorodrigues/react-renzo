@@ -20,19 +20,34 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
+  useColorModeValue,
 } from "@chakra-ui/react"
-import { FaUser } from "react-icons/fa"
+import { FaUser, FaStore } from "react-icons/fa"
 import { useI18n } from "@/lib/i18n/useI18n"
+import Link from "next/link"
 
 export default function DashboardPage() {
   const { t } = useI18n();
+  const bgColor = useColorModeValue('white', 'gray.800');
+  const borderColor = useColorModeValue('gray.200', 'gray.700');
   
   return (
     <Box minH="100vh" bg="gray.50">
       {/* Main Content */}
       <Container maxW="container.xl" py={8}>
         <VStack spacing={8} align="stretch">
-          <Heading size="lg">{t('dashboard.welcome')}</Heading>
+          <Flex justify="space-between" align="center">
+            <Heading size="lg">{t('dashboard.welcome')}</Heading>
+            <Link href="/store" passHref>
+              <Button 
+                leftIcon={<FaStore />} 
+                colorScheme="blue" 
+                size="md"
+              >
+                {t('dashboard.registerStore')}
+              </Button>
+            </Link>
+          </Flex>
           
           {/* Stats */}
           <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={6}>

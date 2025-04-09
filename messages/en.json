@@ -8,7 +8,8 @@
     "settings": "Settings",
     "logout": "Logout",
     "userOptions": "User Options",
-    "changeLanguage": "Change language"
+    "changeLanguage": "Change language",
+    "store": "Store"
   },
   "login": {
     "title": "Login Area",
@@ -48,6 +49,7 @@
   },
   "dashboard": {
     "welcome": "Welcome to your Dashboard",
+    "registerStore": "Register Store",
     "stats": {
       "sales": {
         "label": "Sales",
@@ -183,6 +185,30 @@
       "error": {
         "title": "Error saving settings",
         "description": "An error occurred while updating your preferences."
+      }
+    }
+  },
+  "store": {
+    "title": "Store Registration",
+    "subtitle": "Fill in your store details",
+    "form": {
+      "name": "Store Name",
+      "namePlaceholder": "Enter your store name",
+      "address": "Address",
+      "addressPlaceholder": "Enter the complete address",
+      "phone": "Phone",
+      "phonePlaceholder": "(00) 00000-0000",
+      "email": "Email",
+      "emailPlaceholder": "store@example.com",
+      "isActive": "Store Active",
+      "submit": "Register Store",
+      "success": {
+        "title": "Store registered!",
+        "description": "Your store data has been successfully saved."
+      },
+      "error": {
+        "title": "Registration error",
+        "description": "An error occurred while saving your store data. Please try again."
       }
     }
   }

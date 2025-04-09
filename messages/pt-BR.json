@@ -8,7 +8,8 @@
     "settings": "Configurações",
     "logout": "Sair",
     "userOptions": "Opções do usuário",
-    "changeLanguage": "Alterar idioma"
+    "changeLanguage": "Alterar idioma",
+    "store": "Loja"
   },
   "login": {
     "title": "Área de login",
@@ -48,6 +49,7 @@
   },
   "dashboard": {
     "welcome": "Bem-vindo ao seu Dashboard",
+    "registerStore": "Cadastrar Loja",
     "stats": {
       "sales": {
         "label": "Vendas",
@@ -183,6 +185,30 @@
       "error": {
         "title": "Erro ao salvar configurações",
         "description": "Ocorreu um erro ao atualizar suas preferências."
+      }
+    }
+  },
+  "store": {
+    "title": "Cadastro de Loja",
+    "subtitle": "Preencha os dados da sua loja",
+    "form": {
+      "name": "Nome da Loja",
+      "namePlaceholder": "Digite o nome da sua loja",
+      "address": "Endereço",
+      "addressPlaceholder": "Digite o endereço completo",
+      "phone": "Telefone",
+      "phonePlaceholder": "(00) 00000-0000",
+      "email": "E-mail",
+      "emailPlaceholder": "loja@exemplo.com",
+      "isActive": "Loja Ativa",
+      "submit": "Cadastrar Loja",
+      "success": {
+        "title": "Loja cadastrada!",
+        "description": "Os dados da sua loja foram salvos com sucesso."
+      },
+      "error": {
+        "title": "Erro ao cadastrar",
+        "description": "Ocorreu um erro ao salvar os dados da sua loja. Tente novamente."
       }
     }
   }
