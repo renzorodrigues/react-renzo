@@ -5,6 +5,10 @@ import { config } from './theme-config';
 
 const theme = extendTheme({
   config,
+  fonts: {
+    heading: 'Quicksand, sans-serif',
+    body: 'Quicksand, sans-serif',
+  },
   colors: {
     brand: {
       50: '#f0f9ff',

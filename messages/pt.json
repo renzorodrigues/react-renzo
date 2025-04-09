@@ -1,0 +1,26 @@
+{
+  "app": {
+    "title": "Minha App",
+    "loading": "Carregando..."
+  },
+  "nav": {
+    "profile": "Perfil",
+    "settings": "Configurações",
+    "logout": "Sair",
+    "userOptions": "Opções do usuário",
+    "changeLanguage": "Alterar idioma",
+    "store": "Loja",
+    "sidebar": {
+      "dashboard": "Painel",
+      "residents": "Moradores",
+      "visitors": "Visitantes",
+      "vehicles": "Veículos",
+      "maintenance": "Manutenção",
+      "notifications": "Notificações",
+      "reports": "Relatórios",
+      "settings": "Configurações",
+      "collapse": "Recolher menu",
+      "expand": "Expandir menu"
+    }
+  }
+} 

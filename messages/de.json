@@ -1,7 +1,7 @@
 {
   "app": {
     "title": "Meine App",
-    "loading": "Wird geladen..."
+    "loading": "Laden..."
   },
   "nav": {
     "profile": "Profil",
@@ -9,7 +9,20 @@
     "logout": "Abmelden",
     "userOptions": "Benutzeroptionen",
     "changeLanguage": "Sprache ändern",
-    "store": "Geschäft"
+    "store": "Shop",
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "residents": "Bewohner",
+      "finances": "Finanzen",
+      "events": "Veranstaltungen",
+      "documents": "Dokumente",
+      "communications": "Kommunikation",
+      "incidents": "Vorfälle",
+      "security": "Sicherheit",
+      "settings": "Einstellungen",
+      "collapse": "Menü einklappen",
+      "expand": "Menü ausklappen"
+    }
   },
   "login": {
     "title": "Login-Bereich",

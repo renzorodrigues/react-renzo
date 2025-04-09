@@ -9,7 +9,20 @@
     "logout": "Sair",
     "userOptions": "Opções do usuário",
     "changeLanguage": "Alterar idioma",
-    "store": "Loja"
+    "store": "Loja",
+    "sidebar": {
+      "dashboard": "Painel",
+      "residents": "Moradores",
+      "finances": "Finanças",
+      "events": "Eventos",
+      "documents": "Documentos",
+      "communications": "Comunicações",
+      "incidents": "Incidentes",
+      "security": "Segurança",
+      "settings": "Configurações",
+      "collapse": "Recolher menu",
+      "expand": "Expandir menu"
+    }
   },
   "login": {
     "title": "Área de login",

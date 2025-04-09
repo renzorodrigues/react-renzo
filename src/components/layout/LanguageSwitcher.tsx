@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Box,
   Button,
@@ -8,6 +8,7 @@ import {
   Image,
   Text,
   VStack,
+  useColorModeValue,
   useDisclosure,
   useBreakpointValue,
 } from '@chakra-ui/react';
@@ -24,34 +25,34 @@ export default function LanguageSwitcher() {
   const getCurrentLanguageFlag = () => {
     switch (currentLanguage) {
       case 'pt-BR':
-        return 'https://flagcdn.com/w20/br.png';
+        return 'https://flagcdn.com/w40/br.png';
       case 'de':
-        return 'https://flagcdn.com/w20/de.png';
+        return 'https://flagcdn.com/w40/de.png';
       case 'en':
-        return 'https://flagcdn.com/w20/gb.png';
+        return 'https://flagcdn.com/w40/gb.png';
       default:
-        return 'https://flagcdn.com/w20/br.png';
+        return 'https://flagcdn.com/w40/br.png';
     }
   };
 
   // Valores responsivos para o posicionamento
-  const rightPosition = useBreakpointValue({ base: "60px", md: "80px", lg: "100px" });
+  const topPosition = useBreakpointValue({ base: "30px", md: "40px", lg: "50px" });
 
   return (
     <Box
       position="fixed"
-      right={rightPosition}
-      top="0"
+      right="-10px"
+      top={topPosition}
       zIndex={1000}
     >
       <Box position="relative">
         <Button
           onClick={onToggle}
-          variant="outline"
+          variant="ghost"
           bg="white"
-          size="sm"
-          height="30px"
-          width="40px"
+          size="md"
+          height="40px"
+          width="50px"
           p={0}
           borderRadius="md"
           boxShadow="sm"
@@ -61,17 +62,17 @@ export default function LanguageSwitcher() {
           <Image 
             src={getCurrentLanguageFlag()} 
             alt={currentLanguage} 
-            width="20px" 
+            width="30px" 
+            objectFit="contain"
           />
         </Button>
 
         {isOpen && (
           <Box
             position="absolute"
-            top="100%"
-            left="50%"
-            transform="translateX(-50%)"
-            mt={1}
+            top="0"
+            right="100%"
+            mr={1}
             bg="white"
             borderRadius="md"
             boxShadow="md"

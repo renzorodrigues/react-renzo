@@ -2,11 +2,15 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { AuthProvider } from '@/lib/auth/AuthContext';
 import { I18nProvider } from '@/lib/i18n/provider';
 import type { Metadata } from "next"
-import { Inter } from "next/font/google";
+import { Quicksand } from "next/font/google";
 import "./globals.css";
-import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
+import ErrorBoundary from "@/components/layout/ErrorBoundary";
 
-const inter = Inter({ subsets: ["latin"] });
+const quicksand = Quicksand({ 
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-quicksand",
+});
 
 export const metadata: Metadata = {
   title: "Meu App com Chakra UI",
@@ -20,13 +24,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={inter.className}>
+      <body className={quicksand.className}>
         <ChakraProvider>
           <I18nProvider>
-            <LanguageSwitcher />
-            <AuthProvider>
-              {children}
-            </AuthProvider>
+            <ErrorBoundary>
+              <AuthProvider>
+                {children}
+              </AuthProvider>
+            </ErrorBoundary>
           </I18nProvider>
         </ChakraProvider>
       </body>

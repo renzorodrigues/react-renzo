@@ -7,9 +7,22 @@
     "profile": "Profile",
     "settings": "Settings",
     "logout": "Logout",
-    "userOptions": "User Options",
+    "userOptions": "User options",
     "changeLanguage": "Change language",
-    "store": "Store"
+    "store": "Store",
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "residents": "Residents",
+      "finances": "Finances",
+      "events": "Events",
+      "documents": "Documents",
+      "communications": "Communications",
+      "incidents": "Incidents",
+      "security": "Security",
+      "settings": "Settings",
+      "collapse": "Collapse menu",
+      "expand": "Expand menu"
+    }
   },
   "login": {
     "title": "Login Area",
