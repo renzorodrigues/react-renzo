@@ -27,6 +27,7 @@ import { FaEye, FaEyeSlash, FaGoogle, FaGithub, FaEnvelope, FaLock } from "react
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/lib/auth/AuthContext"
+import { useI18n } from "@/lib/i18n/useI18n"
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
@@ -38,25 +39,26 @@ export default function LoginPage() {
   const toast = useToast()
   const router = useRouter()
   const { login } = useAuth()
+  const { t } = useI18n()
 
   const validateForm = () => {
     let isValid = true
     
     if (!email) {
-      setEmailError("Email é obrigatório")
+      setEmailError(t('login.form.email.error.required'))
       isValid = false
     } else if (!/\S+@\S+\.\S+/.test(email)) {
-      setEmailError("Email inválido")
+      setEmailError(t('login.form.email.error.invalid'))
       isValid = false
     } else {
       setEmailError("")
     }
     
     if (!password) {
-      setPasswordError("Senha é obrigatória")
+      setPasswordError(t('login.form.password.error.required'))
       isValid = false
     } else if (password.length < 6) {
-      setPasswordError("Senha deve ter pelo menos 6 caracteres")
+      setPasswordError(t('login.form.password.error.tooShort'))
       isValid = false
     } else {
       setPasswordError("")
@@ -77,8 +79,8 @@ export default function LoginPage() {
       router.push("/dashboard")
     } catch (error) {
       toast({
-        title: "Erro ao fazer login",
-        description: "Credenciais inválidas",
+        title: t('login.error.title'),
+        description: t('login.error.message'),
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -125,16 +127,16 @@ export default function LoginPage() {
         >
           <VStack spacing={8} align="stretch">
             <VStack spacing={2} align="center">
-              <Heading size="lg" fontWeight="bold">Bem-vindo de volta</Heading>
+              <Heading size="lg" fontWeight="bold">{t('login.title')}</Heading>
               <Text color="gray.500" fontSize="sm" textAlign="center">
-                Entre com suas credenciais para acessar sua conta
+                {t('login.subtitle')}
               </Text>
             </VStack>
             
             <form onSubmit={handleSubmit}>
               <VStack spacing={6}>
                 <FormControl isInvalid={!!emailError}>
-                  <FormLabel fontSize="sm" fontWeight="medium">Email</FormLabel>
+                  <FormLabel fontSize="sm" fontWeight="medium">{t('login.form.email.label')}</FormLabel>
                   <InputGroup>
                     <InputLeftElement pointerEvents="none">
                       <FaEnvelope color="gray.300" />
@@ -143,7 +145,7 @@ export default function LoginPage() {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="seu@email.com"
+                      placeholder={t('login.form.email.placeholder')}
                       size="lg"
                       borderRadius="lg"
                       _focus={{
@@ -156,7 +158,7 @@ export default function LoginPage() {
                 </FormControl>
                 
                 <FormControl isInvalid={!!passwordError}>
-                  <FormLabel fontSize="sm" fontWeight="medium">Senha</FormLabel>
+                  <FormLabel fontSize="sm" fontWeight="medium">{t('login.form.password.label')}</FormLabel>
                   <InputGroup>
                     <InputLeftElement pointerEvents="none">
                       <FaLock color="gray.300" />
@@ -165,7 +167,7 @@ export default function LoginPage() {
                       type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Sua senha"
+                      placeholder={t('login.form.password.placeholder')}
                       size="lg"
                       borderRadius="lg"
                       _focus={{
@@ -176,7 +178,7 @@ export default function LoginPage() {
                     <InputRightElement>
                       <IconButton
                         variant="ghost"
-                        aria-label={showPassword ? "Esconder senha" : "Mostrar senha"}
+                        aria-label={showPassword ? t('login.form.password.hide') : t('login.form.password.show')}
                         icon={showPassword ? <FaEyeSlash /> : <FaEye />}
                         onClick={() => setShowPassword(!showPassword)}
                         size="sm"
@@ -199,24 +201,24 @@ export default function LoginPage() {
                   }}
                   transition="all 0.2s"
                 >
-                  Entrar
+                  {t('login.form.submit')}
                 </Button>
               </VStack>
             </form>
             
             <HStack justify="space-between" fontSize="sm">
               <Link href="/forgot-password" style={{ color: "blue", textDecoration: "none" }}>
-                Esqueceu a senha?
+                {t('login.forgotPassword')}
               </Link>
               <Link href="/register" style={{ color: "blue", textDecoration: "none" }}>
-                Criar conta
+                {t('login.createAccount')}
               </Link>
             </HStack>
             
             <HStack>
               <Divider />
               <Text fontSize="xs" whiteSpace="nowrap" color="gray.500">
-                ou continue com
+                {t('login.socialDivider')}
               </Text>
               <Divider />
             </HStack>
@@ -232,7 +234,7 @@ export default function LoginPage() {
                   bg: "gray.50",
                 }}
               >
-                Google
+                {t('login.socialButtons.google')}
               </Button>
               <Button 
                 variant="outline" 
@@ -244,12 +246,12 @@ export default function LoginPage() {
                   bg: "gray.50",
                 }}
               >
-                GitHub
+                {t('login.socialButtons.github')}
               </Button>
             </HStack>
           </VStack>
         </Box>
       </Flex>
     </Container>
-  );
+  )
 } 

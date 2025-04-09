@@ -1,4 +1,6 @@
-import Providers from '@/components/providers/Providers';
+import { ChakraProvider } from '@chakra-ui/react';
+import { AuthProvider } from '@/lib/auth/AuthContext';
+import { I18nProvider } from '@/lib/i18n/provider';
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -12,11 +14,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR">
+    <html>
       <body>
-        <Providers>
-          {children}
-        </Providers>
+        <ChakraProvider>
+          <I18nProvider>
+            <AuthProvider>
+              {children}
+            </AuthProvider>
+          </I18nProvider>
+        </ChakraProvider>
       </body>
     </html>
   );

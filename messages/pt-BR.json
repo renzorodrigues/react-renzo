@@ -1,0 +1,189 @@
+{
+  "app": {
+    "title": "Minha App",
+    "loading": "Carregando..."
+  },
+  "nav": {
+    "profile": "Perfil",
+    "settings": "Configurações",
+    "logout": "Sair",
+    "userOptions": "Opções do usuário",
+    "changeLanguage": "Alterar idioma"
+  },
+  "login": {
+    "title": "Área de login",
+    "subtitle": "Entre com suas credenciais para acessar sua conta",
+    "form": {
+      "email": {
+        "label": "Email",
+        "placeholder": "seu@email.com",
+        "error": {
+          "required": "Email é obrigatório",
+          "invalid": "Email inválido"
+        }
+      },
+      "password": {
+        "label": "Senha",
+        "placeholder": "Sua senha",
+        "show": "Mostrar senha",
+        "hide": "Esconder senha",
+        "error": {
+          "required": "Senha é obrigatória",
+          "tooShort": "Senha deve ter pelo menos 6 caracteres"
+        }
+      },
+      "submit": "Entrar"
+    },
+    "forgotPassword": "Esqueceu a senha?",
+    "createAccount": "Criar conta",
+    "socialDivider": "ou continue com",
+    "socialButtons": {
+      "google": "Google",
+      "github": "GitHub"
+    },
+    "error": {
+      "title": "Erro ao fazer login",
+      "message": "Credenciais inválidas"
+    }
+  },
+  "dashboard": {
+    "welcome": "Bem-vindo ao seu Dashboard",
+    "stats": {
+      "sales": {
+        "label": "Vendas",
+        "currency": "R$"
+      },
+      "users": {
+        "label": "Usuários"
+      },
+      "orders": {
+        "label": "Pedidos"
+      },
+      "revenue": {
+        "label": "Receita",
+        "currency": "R$"
+      }
+    },
+    "recentActivity": {
+      "title": "Atividades Recentes",
+      "newUser": "Novo usuário registrado",
+      "timeAgo": {
+        "hour": "Há {count} hora",
+        "hours": "Há {count} horas"
+      },
+      "viewButton": "Ver",
+      "viewAll": "Ver todas as atividades"
+    }
+  },
+  "profile": {
+    "title": "Perfil do Usuário",
+    "loading": "Carregando perfil...",
+    "status": "Ativo",
+    "userId": "ID do Usuário",
+    "form": {
+      "name": {
+        "label": "Nome"
+      },
+      "email": {
+        "label": "Email"
+      },
+      "password": {
+        "title": "Alterar Senha",
+        "current": "Senha Atual",
+        "new": "Nova Senha",
+        "confirm": "Confirmar Nova Senha"
+      }
+    },
+    "buttons": {
+      "edit": "Editar Perfil",
+      "cancel": "Cancelar",
+      "save": "Salvar"
+    },
+    "toast": {
+      "success": {
+        "title": "Perfil atualizado",
+        "description": "Suas informações foram atualizadas com sucesso."
+      },
+      "error": {
+        "title": "Erro ao atualizar perfil",
+        "description": "Ocorreu um erro ao atualizar suas informações."
+      }
+    }
+  },
+  "settings": {
+    "title": "Configurações",
+    "saveButton": "Salvar Alterações",
+    "tabs": {
+      "appearance": "Aparência",
+      "notifications": "Notificações",
+      "privacy": "Privacidade",
+      "language": "Idioma"
+    },
+    "appearance": {
+      "title": "Preferências de Aparência",
+      "darkMode": "Modo Escuro",
+      "fontSize": {
+        "label": "Tamanho da Fonte",
+        "small": "Pequeno",
+        "medium": "Médio",
+        "large": "Grande"
+      },
+      "theme": {
+        "label": "Visualização",
+        "light": "Claro",
+        "dark": "Escuro",
+        "system": "Sistema"
+      }
+    },
+    "notifications": {
+      "title": "Preferências de Notificação",
+      "email": "Notificações por Email",
+      "push": "Notificações Push",
+      "marketing": "Emails de Marketing",
+      "frequency": {
+        "label": "Frequência de Notificações",
+        "realtime": "Tempo Real",
+        "daily": "Diário",
+        "weekly": "Semanal"
+      }
+    },
+    "privacy": {
+      "title": "Configurações de Privacidade",
+      "profileVisibility": {
+        "label": "Visibilidade do Perfil",
+        "public": "Público",
+        "private": "Privado",
+        "friends": "Apenas Amigos"
+      },
+      "showEmail": "Mostrar Email"
+    },
+    "language": {
+      "title": "Preferências de Idioma",
+      "select": "Selecione o Idioma",
+      "options": {
+        "pt-BR": "Português",
+        "de": "Deutsch",
+        "en": "English"
+      }
+    },
+    "accountInfo": {
+      "title": "Informações da Conta",
+      "version": "Versão da Aplicação",
+      "browser": "Navegador",
+      "screenResolution": "Resolução da Tela",
+      "unknown": "Desconhecido"
+    }
+  },
+  "toasts": {
+    "settings": {
+      "success": {
+        "title": "Configurações salvas",
+        "description": "Suas preferências foram atualizadas com sucesso."
+      },
+      "error": {
+        "title": "Erro ao salvar configurações",
+        "description": "Ocorreu um erro ao atualizar suas preferências."
+      }
+    }
+  }
+} 

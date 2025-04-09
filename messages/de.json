@@ -1,0 +1,189 @@
+{
+  "app": {
+    "title": "Meine App",
+    "loading": "Wird geladen..."
+  },
+  "nav": {
+    "profile": "Profil",
+    "settings": "Einstellungen",
+    "logout": "Abmelden",
+    "userOptions": "Benutzeroptionen",
+    "changeLanguage": "Sprache ändern"
+  },
+  "login": {
+    "title": "Login-Bereich",
+    "subtitle": "Melden Sie sich mit Ihren Anmeldedaten an, um auf Ihr Konto zuzugreifen",
+    "form": {
+      "email": {
+        "label": "E-Mail",
+        "placeholder": "ihre@email.com",
+        "error": {
+          "required": "E-Mail ist erforderlich",
+          "invalid": "Ungültige E-Mail"
+        }
+      },
+      "password": {
+        "label": "Passwort",
+        "placeholder": "Ihr Passwort",
+        "show": "Passwort anzeigen",
+        "hide": "Passwort verbergen",
+        "error": {
+          "required": "Passwort ist erforderlich",
+          "tooShort": "Passwort muss mindestens 6 Zeichen lang sein"
+        }
+      },
+      "submit": "Anmelden"
+    },
+    "forgotPassword": "Passwort vergessen?",
+    "createAccount": "Konto erstellen",
+    "socialDivider": "oder fortfahren mit",
+    "socialButtons": {
+      "google": "Google",
+      "github": "GitHub"
+    },
+    "error": {
+      "title": "Anmeldefehler",
+      "message": "Ungültige Anmeldedaten"
+    }
+  },
+  "dashboard": {
+    "welcome": "Willkommen in Ihrem Dashboard",
+    "stats": {
+      "sales": {
+        "label": "Verkäufe",
+        "currency": "€"
+      },
+      "users": {
+        "label": "Benutzer"
+      },
+      "orders": {
+        "label": "Bestellungen"
+      },
+      "revenue": {
+        "label": "Umsatz",
+        "currency": "€"
+      }
+    },
+    "recentActivity": {
+      "title": "Letzte Aktivitäten",
+      "newUser": "Neuer Benutzer registriert",
+      "timeAgo": {
+        "hour": "vor {count} Stunde",
+        "hours": "vor {count} Stunden"
+      },
+      "viewButton": "Ansehen",
+      "viewAll": "Alle Aktivitäten anzeigen"
+    }
+  },
+  "profile": {
+    "title": "Benutzerprofil",
+    "loading": "Profil wird geladen...",
+    "status": "Aktiv",
+    "userId": "Benutzer-ID",
+    "form": {
+      "name": {
+        "label": "Name"
+      },
+      "email": {
+        "label": "E-Mail"
+      },
+      "password": {
+        "title": "Passwort ändern",
+        "current": "Aktuelles Passwort",
+        "new": "Neues Passwort",
+        "confirm": "Neues Passwort bestätigen"
+      }
+    },
+    "buttons": {
+      "edit": "Profil bearbeiten",
+      "cancel": "Abbrechen",
+      "save": "Speichern"
+    },
+    "toast": {
+      "success": {
+        "title": "Profil aktualisiert",
+        "description": "Ihre Informationen wurden erfolgreich aktualisiert."
+      },
+      "error": {
+        "title": "Fehler beim Aktualisieren des Profils",
+        "description": "Beim Aktualisieren Ihrer Informationen ist ein Fehler aufgetreten."
+      }
+    }
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "saveButton": "Änderungen speichern",
+    "tabs": {
+      "appearance": "Erscheinungsbild",
+      "notifications": "Benachrichtigungen",
+      "privacy": "Datenschutz",
+      "language": "Sprache"
+    },
+    "appearance": {
+      "title": "Darstellungseinstellungen",
+      "darkMode": "Dunkelmodus",
+      "fontSize": {
+        "label": "Schriftgröße",
+        "small": "Klein",
+        "medium": "Mittel",
+        "large": "Groß"
+      },
+      "theme": {
+        "label": "Ansicht",
+        "light": "Hell",
+        "dark": "Dunkel",
+        "system": "System"
+      }
+    },
+    "notifications": {
+      "title": "Benachrichtigungseinstellungen",
+      "email": "E-Mail-Benachrichtigungen",
+      "push": "Push-Benachrichtigungen",
+      "marketing": "Marketing-E-Mails",
+      "frequency": {
+        "label": "Benachrichtigungshäufigkeit",
+        "realtime": "Echtzeit",
+        "daily": "Täglich",
+        "weekly": "Wöchentlich"
+      }
+    },
+    "privacy": {
+      "title": "Datenschutzeinstellungen",
+      "profileVisibility": {
+        "label": "Profilsichtbarkeit",
+        "public": "Öffentlich",
+        "private": "Privat",
+        "friends": "Nur Freunde"
+      },
+      "showEmail": "E-Mail anzeigen"
+    },
+    "language": {
+      "title": "Spracheinstellungen",
+      "select": "Sprache auswählen",
+      "options": {
+        "pt-BR": "Português",
+        "de": "Deutsch",
+        "en": "English"
+      }
+    },
+    "accountInfo": {
+      "title": "Kontoinformationen",
+      "version": "Anwendungsversion",
+      "browser": "Browser",
+      "screenResolution": "Bildschirmauflösung",
+      "unknown": "Unbekannt"
+    }
+  },
+  "toasts": {
+    "settings": {
+      "success": {
+        "title": "Einstellungen gespeichert",
+        "description": "Ihre Einstellungen wurden erfolgreich aktualisiert."
+      },
+      "error": {
+        "title": "Fehler beim Speichern der Einstellungen",
+        "description": "Beim Aktualisieren Ihrer Einstellungen ist ein Fehler aufgetreten."
+      }
+    }
+  }
+} 

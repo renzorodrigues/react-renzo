@@ -27,9 +27,11 @@ import {
 } from "@chakra-ui/react"
 import { FaUser, FaEnvelope, FaKey, FaEdit, FaSave, FaTimes } from "react-icons/fa"
 import { useAuth } from "@/lib/auth/AuthContext"
+import { useI18n } from "@/lib/i18n/useI18n"
 
 export default function ProfilePage() {
   const { user, login } = useAuth()
+  const { t } = useI18n()
   const [isEditing, setIsEditing] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
@@ -84,8 +86,8 @@ export default function ProfilePage() {
       await login(formData.email, formData.currentPassword || "any-password")
       
       toast({
-        title: "Perfil atualizado",
-        description: "Suas informações foram atualizadas com sucesso.",
+        title: t('profile.toast.success.title'),
+        description: t('profile.toast.success.description'),
         status: "success",
         duration: 3000,
         isClosable: true,
@@ -94,8 +96,8 @@ export default function ProfilePage() {
       setIsEditing(false)
     } catch (error) {
       toast({
-        title: "Erro ao atualizar perfil",
-        description: "Ocorreu um erro ao atualizar suas informações.",
+        title: t('profile.toast.error.title'),
+        description: t('profile.toast.error.description'),
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -120,7 +122,7 @@ export default function ProfilePage() {
   if (!user) {
     return (
       <Container maxW="container.xl" py={8}>
-        <Text>Carregando perfil...</Text>
+        <Text>{t('profile.loading')}</Text>
       </Container>
     )
   }
@@ -128,7 +130,7 @@ export default function ProfilePage() {
   return (
     <Container maxW="container.xl" py={8}>
       <VStack spacing={8} align="stretch">
-        <Heading size="lg">Perfil do Usuário</Heading>
+        <Heading size="lg">{t('profile.title')}</Heading>
         
         <Card bg={bgColor} borderWidth="1px" borderColor={borderColor} borderRadius="lg">
           <CardHeader>
@@ -138,7 +140,7 @@ export default function ProfilePage() {
                 <VStack align="start" spacing={0}>
                   <Heading size="md">{user.name}</Heading>
                   <Text color="gray.500">{user.email}</Text>
-                  <Badge colorScheme="green" mt={1}>Ativo</Badge>
+                  <Badge colorScheme="green" mt={1}>{t('profile.status')}</Badge>
                 </VStack>
               </HStack>
               
@@ -148,7 +150,7 @@ export default function ProfilePage() {
                   colorScheme="blue" 
                   onClick={() => setIsEditing(true)}
                 >
-                  Editar Perfil
+                  {t('profile.buttons.edit')}
                 </Button>
               ) : (
                 <HStack>
@@ -157,7 +159,7 @@ export default function ProfilePage() {
                     variant="outline" 
                     onClick={cancelEdit}
                   >
-                    Cancelar
+                    {t('profile.buttons.cancel')}
                   </Button>
                   <Button 
                     leftIcon={<FaSave />} 
@@ -165,7 +167,7 @@ export default function ProfilePage() {
                     onClick={handleSubmit}
                     isLoading={isLoading}
                   >
-                    Salvar
+                    {t('profile.buttons.save')}
                   </Button>
                 </HStack>
               )}
@@ -176,7 +178,7 @@ export default function ProfilePage() {
             <form onSubmit={handleSubmit}>
               <VStack spacing={6} align="stretch">
                 <FormControl isRequired>
-                  <FormLabel>Nome</FormLabel>
+                  <FormLabel>{t('profile.form.name.label')}</FormLabel>
                   <InputGroup>
                     <InputLeftElement pointerEvents="none">
                       <Icon as={FaUser} color="gray.400" />
@@ -191,7 +193,7 @@ export default function ProfilePage() {
                 </FormControl>
                 
                 <FormControl isRequired>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>{t('profile.form.email.label')}</FormLabel>
                   <InputGroup>
                     <InputLeftElement pointerEvents="none">
                       <Icon as={FaEnvelope} color="gray.400" />
@@ -209,10 +211,10 @@ export default function ProfilePage() {
                 {isEditing && (
                   <>
                     <Divider />
-                    <Heading size="sm">Alterar Senha</Heading>
+                    <Heading size="sm">{t('profile.form.password.title')}</Heading>
                     
                     <FormControl>
-                      <FormLabel>Senha Atual</FormLabel>
+                      <FormLabel>{t('profile.form.password.current')}</FormLabel>
                       <InputGroup>
                         <InputLeftElement pointerEvents="none">
                           <Icon as={FaKey} color="gray.400" />
@@ -227,7 +229,7 @@ export default function ProfilePage() {
                     </FormControl>
                     
                     <FormControl>
-                      <FormLabel>Nova Senha</FormLabel>
+                      <FormLabel>{t('profile.form.password.new')}</FormLabel>
                       <InputGroup>
                         <InputLeftElement pointerEvents="none">
                           <Icon as={FaKey} color="gray.400" />
@@ -242,7 +244,7 @@ export default function ProfilePage() {
                     </FormControl>
                     
                     <FormControl>
-                      <FormLabel>Confirmar Nova Senha</FormLabel>
+                      <FormLabel>{t('profile.form.password.confirm')}</FormLabel>
                       <InputGroup>
                         <InputLeftElement pointerEvents="none">
                           <Icon as={FaKey} color="gray.400" />
@@ -269,7 +271,7 @@ export default function ProfilePage() {
           <CardBody>
             <VStack align="stretch" spacing={4}>
               <HStack justify="space-between">
-                <Text fontWeight="medium">ID do Usuário</Text>
+                <Text fontWeight="medium">{t('profile.userId')}</Text>
                 <Text color="gray.500">{user.id}</Text>
               </HStack>
               <HStack justify="space-between">
@@ -282,7 +284,7 @@ export default function ProfilePage() {
               </HStack>
               <HStack justify="space-between">
                 <Text fontWeight="medium">Status da Conta</Text>
-                <Badge colorScheme="green">Ativo</Badge>
+                <Badge colorScheme="green">{t('profile.status')}</Badge>
               </HStack>
             </VStack>
           </CardBody>

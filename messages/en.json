@@ -1,0 +1,189 @@
+{
+  "app": {
+    "title": "My App",
+    "loading": "Loading..."
+  },
+  "nav": {
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout",
+    "userOptions": "User Options",
+    "changeLanguage": "Change language"
+  },
+  "login": {
+    "title": "Login Area",
+    "subtitle": "Sign in with your credentials to access your account",
+    "form": {
+      "email": {
+        "label": "Email",
+        "placeholder": "your@email.com",
+        "error": {
+          "required": "Email is required",
+          "invalid": "Invalid email"
+        }
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Your password",
+        "show": "Show password",
+        "hide": "Hide password",
+        "error": {
+          "required": "Password is required",
+          "tooShort": "Password must be at least 6 characters"
+        }
+      },
+      "submit": "Sign In"
+    },
+    "forgotPassword": "Forgot password?",
+    "createAccount": "Create account",
+    "socialDivider": "or continue with",
+    "socialButtons": {
+      "google": "Google",
+      "github": "GitHub"
+    },
+    "error": {
+      "title": "Login Error",
+      "message": "Invalid credentials"
+    }
+  },
+  "dashboard": {
+    "welcome": "Welcome to your Dashboard",
+    "stats": {
+      "sales": {
+        "label": "Sales",
+        "currency": "$"
+      },
+      "users": {
+        "label": "Users"
+      },
+      "orders": {
+        "label": "Orders"
+      },
+      "revenue": {
+        "label": "Revenue",
+        "currency": "$"
+      }
+    },
+    "recentActivity": {
+      "title": "Recent Activity",
+      "newUser": "New user registered",
+      "timeAgo": {
+        "hour": "{count} hour ago",
+        "hours": "{count} hours ago"
+      },
+      "viewButton": "View",
+      "viewAll": "View all activities"
+    }
+  },
+  "profile": {
+    "title": "User Profile",
+    "loading": "Loading profile...",
+    "status": "Active",
+    "userId": "User ID",
+    "form": {
+      "name": {
+        "label": "Name"
+      },
+      "email": {
+        "label": "Email"
+      },
+      "password": {
+        "title": "Change Password",
+        "current": "Current Password",
+        "new": "New Password",
+        "confirm": "Confirm New Password"
+      }
+    },
+    "buttons": {
+      "edit": "Edit Profile",
+      "cancel": "Cancel",
+      "save": "Save"
+    },
+    "toast": {
+      "success": {
+        "title": "Profile updated",
+        "description": "Your information has been successfully updated."
+      },
+      "error": {
+        "title": "Error updating profile",
+        "description": "An error occurred while updating your information."
+      }
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "saveButton": "Save Changes",
+    "tabs": {
+      "appearance": "Appearance",
+      "notifications": "Notifications",
+      "privacy": "Privacy",
+      "language": "Language"
+    },
+    "appearance": {
+      "title": "Appearance Settings",
+      "darkMode": "Dark Mode",
+      "fontSize": {
+        "label": "Font Size",
+        "small": "Small",
+        "medium": "Medium",
+        "large": "Large"
+      },
+      "theme": {
+        "label": "Theme",
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System"
+      }
+    },
+    "notifications": {
+      "title": "Notification Settings",
+      "email": "Email Notifications",
+      "push": "Push Notifications",
+      "marketing": "Marketing Emails",
+      "frequency": {
+        "label": "Notification Frequency",
+        "realtime": "Real-time",
+        "daily": "Daily",
+        "weekly": "Weekly"
+      }
+    },
+    "privacy": {
+      "title": "Privacy Settings",
+      "profileVisibility": {
+        "label": "Profile Visibility",
+        "public": "Public",
+        "private": "Private",
+        "friends": "Friends Only"
+      },
+      "showEmail": "Show Email"
+    },
+    "language": {
+      "title": "Language Settings",
+      "select": "Select Language",
+      "options": {
+        "pt-BR": "Português",
+        "de": "Deutsch",
+        "en": "English"
+      }
+    },
+    "accountInfo": {
+      "title": "Account Information",
+      "version": "Application Version",
+      "browser": "Browser",
+      "screenResolution": "Screen Resolution",
+      "unknown": "Unknown"
+    }
+  },
+  "toasts": {
+    "settings": {
+      "success": {
+        "title": "Settings saved",
+        "description": "Your preferences have been successfully updated."
+      },
+      "error": {
+        "title": "Error saving settings",
+        "description": "An error occurred while updating your preferences."
+      }
+    }
+  }
+} 

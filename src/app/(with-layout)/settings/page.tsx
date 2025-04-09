@@ -31,12 +31,22 @@ import {
   RadioGroup,
   Stack,
   Badge,
+  Image,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuItemOption,
+  MenuOptionGroup,
+  MenuDivider,
 } from "@chakra-ui/react"
-import { FaBell, FaPalette, FaGlobe, FaShieldAlt, FaSave } from "react-icons/fa"
+import { FaBell, FaPalette, FaGlobe, FaShieldAlt, FaSave, FaChevronDown } from "react-icons/fa"
 import { useAuth } from "@/lib/auth/AuthContext"
+import { useI18n } from "@/lib/i18n/useI18n"
 
 export default function SettingsPage() {
   const { user } = useAuth()
+  const { t, changeLanguage } = useI18n()
   const { colorMode, toggleColorMode } = useColorMode()
   const [isLoading, setIsLoading] = useState(false)
   const toast = useToast()
@@ -59,7 +69,7 @@ export default function SettingsPage() {
     showEmail: false,
     
     // Idioma
-    language: "pt-BR",
+    language: typeof window !== 'undefined' ? localStorage.getItem('userLanguage') || 'pt-BR' : 'pt-BR',
   })
   
   const handleChange = (name: string, value: any) => {
@@ -74,28 +84,35 @@ export default function SettingsPage() {
     
     try {
       // Simulando uma atualização de configurações
-      // Em uma aplicação real, você faria uma chamada à API
       await new Promise(resolve => setTimeout(resolve, 1000))
       
-      // Salva as configurações no localStorage
-      localStorage.setItem('userSettings', JSON.stringify(settings))
+      // Salva as configurações
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('userSettings', JSON.stringify(settings))
+      }
       
       // Aplica o tema se foi alterado
       if (settings.theme !== colorMode) {
         toggleColorMode()
       }
+
+      // Aplica o idioma se foi alterado
+      const currentLanguage = localStorage.getItem('userLanguage') || 'pt-BR'
+      if (settings.language !== currentLanguage) {
+        await changeLanguage(settings.language)
+      }
       
       toast({
-        title: "Configurações salvas",
-        description: "Suas preferências foram atualizadas com sucesso.",
+        title: t('toasts.settings.success.title'),
+        description: t('toasts.settings.success.description'),
         status: "success",
         duration: 3000,
         isClosable: true,
       })
     } catch (error) {
       toast({
-        title: "Erro ao salvar configurações",
-        description: "Ocorreu um erro ao atualizar suas preferências.",
+        title: t('toasts.settings.error.title'),
+        description: t('toasts.settings.error.description'),
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -108,7 +125,7 @@ export default function SettingsPage() {
   if (!user) {
     return (
       <Container maxW="container.xl" py={8}>
-        <Text>Carregando configurações...</Text>
+        <Text>{t('app.loading')}</Text>
       </Container>
     )
   }
@@ -117,23 +134,23 @@ export default function SettingsPage() {
     <Container maxW="container.xl" py={8}>
       <VStack spacing={8} align="stretch">
         <Flex justify="space-between" align="center">
-          <Heading size="lg">Configurações</Heading>
+          <Heading size="lg">{t('settings.title')}</Heading>
           <Button 
             leftIcon={<FaSave />} 
             colorScheme="blue" 
             onClick={handleSave}
             isLoading={isLoading}
           >
-            Salvar Alterações
+            {t('settings.saveButton')}
           </Button>
         </Flex>
         
         <Tabs variant="enclosed" colorScheme="blue">
           <TabList>
-            <Tab><Icon as={FaPalette} mr={2} />Aparência</Tab>
-            <Tab><Icon as={FaBell} mr={2} />Notificações</Tab>
-            <Tab><Icon as={FaShieldAlt} mr={2} />Privacidade</Tab>
-            <Tab><Icon as={FaGlobe} mr={2} />Idioma</Tab>
+            <Tab><Icon as={FaPalette} mr={2} />{t('settings.tabs.appearance')}</Tab>
+            <Tab><Icon as={FaBell} mr={2} />{t('settings.tabs.notifications')}</Tab>
+            <Tab><Icon as={FaShieldAlt} mr={2} />{t('settings.tabs.privacy')}</Tab>
+            <Tab><Icon as={FaGlobe} mr={2} />{t('settings.tabs.language')}</Tab>
           </TabList>
           
           <TabPanels>
@@ -141,13 +158,13 @@ export default function SettingsPage() {
             <TabPanel>
               <Card bg={bgColor} borderWidth="1px" borderColor={borderColor} borderRadius="lg">
                 <CardHeader>
-                  <Heading size="md">Preferências de Aparência</Heading>
+                  <Heading size="md">{t('settings.appearance.title')}</Heading>
                 </CardHeader>
                 <CardBody>
                   <VStack spacing={6} align="stretch">
                     <FormControl display="flex" alignItems="center">
                       <FormLabel htmlFor="theme" mb="0">
-                        Modo Escuro
+                        {t('settings.appearance.darkMode')}
                       </FormLabel>
                       <Switch 
                         id="theme" 
@@ -158,28 +175,28 @@ export default function SettingsPage() {
                     </FormControl>
                     
                     <FormControl>
-                      <FormLabel>Tamanho da Fonte</FormLabel>
+                      <FormLabel>{t('settings.appearance.fontSize.label')}</FormLabel>
                       <Select 
                         value={settings.fontSize} 
                         onChange={(e) => handleChange("fontSize", e.target.value)}
                       >
-                        <option value="small">Pequeno</option>
-                        <option value="medium">Médio</option>
-                        <option value="large">Grande</option>
+                        <option value="small">{t('settings.appearance.fontSize.small')}</option>
+                        <option value="medium">{t('settings.appearance.fontSize.medium')}</option>
+                        <option value="large">{t('settings.appearance.fontSize.large')}</option>
                       </Select>
                     </FormControl>
                     
                     <Divider />
                     
-                    <Text fontWeight="medium">Visualização</Text>
+                    <Text fontWeight="medium">{t('settings.appearance.theme.label')}</Text>
                     <RadioGroup 
                       value={settings.theme} 
                       onChange={(value) => handleChange("theme", value)}
                     >
                       <Stack direction="row" spacing={5}>
-                        <Radio value="light">Claro</Radio>
-                        <Radio value="dark">Escuro</Radio>
-                        <Radio value="system">Sistema</Radio>
+                        <Radio value="light">{t('settings.appearance.theme.light')}</Radio>
+                        <Radio value="dark">{t('settings.appearance.theme.dark')}</Radio>
+                        <Radio value="system">{t('settings.appearance.theme.system')}</Radio>
                       </Stack>
                     </RadioGroup>
                   </VStack>
@@ -191,13 +208,13 @@ export default function SettingsPage() {
             <TabPanel>
               <Card bg={bgColor} borderWidth="1px" borderColor={borderColor} borderRadius="lg">
                 <CardHeader>
-                  <Heading size="md">Preferências de Notificação</Heading>
+                  <Heading size="md">{t('settings.notifications.title')}</Heading>
                 </CardHeader>
                 <CardBody>
                   <VStack spacing={6} align="stretch">
                     <FormControl display="flex" alignItems="center">
                       <FormLabel htmlFor="emailNotifications" mb="0">
-                        Notificações por Email
+                        {t('settings.notifications.email')}
                       </FormLabel>
                       <Switch 
                         id="emailNotifications" 
@@ -209,7 +226,7 @@ export default function SettingsPage() {
                     
                     <FormControl display="flex" alignItems="center">
                       <FormLabel htmlFor="pushNotifications" mb="0">
-                        Notificações Push
+                        {t('settings.notifications.push')}
                       </FormLabel>
                       <Switch 
                         id="pushNotifications" 
@@ -221,7 +238,7 @@ export default function SettingsPage() {
                     
                     <FormControl display="flex" alignItems="center">
                       <FormLabel htmlFor="marketingEmails" mb="0">
-                        Emails de Marketing
+                        {t('settings.notifications.marketing')}
                       </FormLabel>
                       <Switch 
                         id="marketingEmails" 
@@ -233,11 +250,11 @@ export default function SettingsPage() {
                     
                     <Divider />
                     
-                    <Text fontWeight="medium">Frequência de Notificações</Text>
+                    <Text fontWeight="medium">{t('settings.notifications.frequency.label')}</Text>
                     <Select defaultValue="daily">
-                      <option value="realtime">Tempo Real</option>
-                      <option value="daily">Diário</option>
-                      <option value="weekly">Semanal</option>
+                      <option value="realtime">{t('settings.notifications.frequency.realtime')}</option>
+                      <option value="daily">{t('settings.notifications.frequency.daily')}</option>
+                      <option value="weekly">{t('settings.notifications.frequency.weekly')}</option>
                     </Select>
                   </VStack>
                 </CardBody>
@@ -248,25 +265,25 @@ export default function SettingsPage() {
             <TabPanel>
               <Card bg={bgColor} borderWidth="1px" borderColor={borderColor} borderRadius="lg">
                 <CardHeader>
-                  <Heading size="md">Configurações de Privacidade</Heading>
+                  <Heading size="md">{t('settings.privacy.title')}</Heading>
                 </CardHeader>
                 <CardBody>
                   <VStack spacing={6} align="stretch">
                     <FormControl>
-                      <FormLabel>Visibilidade do Perfil</FormLabel>
+                      <FormLabel>{t('settings.privacy.profileVisibility.label')}</FormLabel>
                       <Select 
                         value={settings.profileVisibility} 
                         onChange={(e) => handleChange("profileVisibility", e.target.value)}
                       >
-                        <option value="public">Público</option>
-                        <option value="friends">Apenas Amigos</option>
-                        <option value="private">Privado</option>
+                        <option value="public">{t('settings.privacy.profileVisibility.public')}</option>
+                        <option value="private">{t('settings.privacy.profileVisibility.private')}</option>
+                        <option value="friends">{t('settings.privacy.profileVisibility.friends')}</option>
                       </Select>
                     </FormControl>
                     
                     <FormControl display="flex" alignItems="center">
                       <FormLabel htmlFor="showEmail" mb="0">
-                        Mostrar Email no Perfil
+                        {t('settings.privacy.showEmail')}
                       </FormLabel>
                       <Switch 
                         id="showEmail" 
@@ -275,18 +292,6 @@ export default function SettingsPage() {
                         colorScheme="blue"
                       />
                     </FormControl>
-                    
-                    <Divider />
-                    
-                    <Text fontWeight="medium">Dados da Conta</Text>
-                    <HStack justify="space-between">
-                      <Text>Exportar Dados</Text>
-                      <Button size="sm" variant="outline">Exportar</Button>
-                    </HStack>
-                    <HStack justify="space-between">
-                      <Text>Excluir Conta</Text>
-                      <Button size="sm" colorScheme="red" variant="outline">Excluir</Button>
-                    </HStack>
                   </VStack>
                 </CardBody>
               </Card>
@@ -296,41 +301,69 @@ export default function SettingsPage() {
             <TabPanel>
               <Card bg={bgColor} borderWidth="1px" borderColor={borderColor} borderRadius="lg">
                 <CardHeader>
-                  <Heading size="md">Preferências de Idioma</Heading>
+                  <Heading size="md">{t('settings.language.title')}</Heading>
                 </CardHeader>
                 <CardBody>
                   <VStack spacing={6} align="stretch">
                     <FormControl>
-                      <FormLabel>Idioma da Interface</FormLabel>
-                      <Select 
-                        value={settings.language} 
-                        onChange={(e) => handleChange("language", e.target.value)}
-                      >
-                        <option value="pt-BR">Português (Brasil)</option>
-                        <option value="en-US">English (US)</option>
-                        <option value="es-ES">Español</option>
-                        <option value="fr-FR">Français</option>
-                        <option value="de-DE">Deutsch</option>
-                      </Select>
-                    </FormControl>
-                    
-                    <Divider />
-                    
-                    <Text fontWeight="medium">Formato de Data e Hora</Text>
-                    <Select defaultValue="dd/mm/yyyy">
-                      <option value="dd/mm/yyyy">DD/MM/YYYY</option>
-                      <option value="mm/dd/yyyy">MM/DD/YYYY</option>
-                      <option value="yyyy-mm-dd">YYYY-MM-DD</option>
-                    </Select>
-                    
-                    <FormControl>
-                      <FormLabel>Fuso Horário</FormLabel>
-                      <Select defaultValue="America/Sao_Paulo">
-                        <option value="America/Sao_Paulo">Brasília (GMT-3)</option>
-                        <option value="America/New_York">Nova York (GMT-4)</option>
-                        <option value="Europe/London">Londres (GMT+1)</option>
-                        <option value="Asia/Tokyo">Tóquio (GMT+9)</option>
-                      </Select>
+                      <FormLabel>{t('settings.language.select')}</FormLabel>
+                      <Menu>
+                        <MenuButton 
+                          as={Button} 
+                          rightIcon={<FaChevronDown />}
+                          width="full"
+                          textAlign="left"
+                        >
+                          <HStack>
+                            {settings.language === "pt-BR" && (
+                              <Image 
+                                src="https://flagcdn.com/w20/br.png" 
+                                alt="Brasil" 
+                                width="20px" 
+                              />
+                            )}
+                            {settings.language === "de" && (
+                              <Image 
+                                src="https://flagcdn.com/w20/de.png" 
+                                alt="Deutschland" 
+                                width="20px" 
+                              />
+                            )}
+                            {settings.language === "en" && (
+                              <Image 
+                                src="https://flagcdn.com/w20/gb.png" 
+                                alt="United Kingdom" 
+                                width="20px" 
+                              />
+                            )}
+                            <Text ml={2}>
+                              {settings.language === "pt-BR" && t('settings.language.options.pt-BR')}
+                              {settings.language === "de" && t('settings.language.options.de')}
+                              {settings.language === "en" && t('settings.language.options.en')}
+                            </Text>
+                          </HStack>
+                        </MenuButton>
+                        <MenuList>
+                          <MenuItem 
+                            onClick={() => handleChange("language", "pt-BR")}
+                            icon={<Image src="https://flagcdn.com/w20/br.png" alt="Brasil" width="20px" />}
+                          >
+                            {t('settings.language.options.pt-BR')}
+                          </MenuItem>
+                          <MenuItem 
+                            onClick={() => handleChange("language", "de")}
+                            icon={<Image src="https://flagcdn.com/w20/de.png" alt="Deutschland" width="20px" />}
+                          >
+                            {t('settings.language.options.de')}
+                          </MenuItem>
+                          <MenuItem 
+                            onClick={() => handleChange("language", "en")}
+                            icon={<Image src="https://flagcdn.com/w20/gb.png" alt="United Kingdom" width="20px" />}
+                          >
+                            {t('settings.language.options.en')}
+                          </MenuItem>
+                        </MenuList>
+                      </Menu>
                     </FormControl>
                   </VStack>
                 </CardBody>
@@ -341,22 +374,22 @@ export default function SettingsPage() {
         
         <Card bg={bgColor} borderWidth="1px" borderColor={borderColor} borderRadius="lg">
           <CardHeader>
-            <Heading size="md">Informações do Sistema</Heading>
+            <Heading size="md">{t('settings.accountInfo.title')}</Heading>
           </CardHeader>
           <CardBody>
             <VStack align="stretch" spacing={4}>
               <HStack justify="space-between">
-                <Text fontWeight="medium">Versão da Aplicação</Text>
+                <Text fontWeight="medium">{t('settings.accountInfo.version')}</Text>
                 <Badge colorScheme="blue">1.0.0</Badge>
               </HStack>
               <HStack justify="space-between">
-                <Text fontWeight="medium">Navegador</Text>
-                <Text color="gray.500">{typeof window !== 'undefined' ? window.navigator.userAgent : 'Desconhecido'}</Text>
+                <Text fontWeight="medium">{t('settings.accountInfo.browser')}</Text>
+                <Text color="gray.500">{typeof window !== 'undefined' ? window.navigator.userAgent : t('settings.accountInfo.unknown')}</Text>
               </HStack>
               <HStack justify="space-between">
-                <Text fontWeight="medium">Resolução da Tela</Text>
+                <Text fontWeight="medium">{t('settings.accountInfo.screenResolution')}</Text>
                 <Text color="gray.500">
-                  {typeof window !== 'undefined' ? `${window.innerWidth}x${window.innerHeight}` : 'Desconhecido'}
+                  {typeof window !== 'undefined' ? `${window.innerWidth}x${window.innerHeight}` : t('settings.accountInfo.unknown')}
                 </Text>
               </HStack>
             </VStack>
